@@ -5,6 +5,10 @@ A small growl-like notification plugin for jQuery
 
 ## Change Log
 
+### Changes in 1.7.4.1 (January 30, 2012)
+
+* Forked for changes. Added 'href' param to allow for linkable notifications. .gritter-item element changed to achor tag with display block. .gritter-top and .gritter-bottom elements removed from js and css. Rounded corners and transparency no achieved via css3. Not tested in ie7-8, will test soon.
+
 ### Changes in 1.7.4 (February 24, 2012)
 
 * Fixing bug where click event was being bound multiple times on hover. The result was the beforeClose callback being called multiple times. Thanks for commit aossowski!

@@ -6,7 +6,7 @@
  * Dual licensed under the MIT and GPL licenses.
  *
  * Date: February 24, 2012
- * Version: 1.7.4
+ * Version: 1.7.4.1
  */
 
 (function($){
