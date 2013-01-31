@@ -181,7 +181,8 @@
 			});
 			
 			// Clicking (X) makes the perdy thing close
-			$(item).find('.gritter-close').click(function(){
+			$(item).find('.gritter-close').click(function(e){
+				e.preventDefault();
 				Gritter.removeSpecific(number, {}, null, true);
 			});
 			
