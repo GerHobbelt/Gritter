@@ -6,7 +6,7 @@
  * Dual licensed under the MIT and GPL licenses.
  *
  * Date: February 24, 2012
- * Version: 1.7.4
+ * Version: 1.7.4.1
  */
 
 (function($){
@@ -80,7 +80,7 @@
 		_is_setup: 0,
 		_tpl_close: '<a class="gritter-close" href="#" tabindex="1">Close Notification</a>',
 		_tpl_title: '<span class="gritter-title">[[title]]</span>',
-		_tpl_item: '<div id="gritter-item-[[number]]" class="gritter-item-wrapper [[item_class]]" style="display:none" role="alert"><div class="gritter-top"></div><div class="gritter-item">[[close]][[image]]<div class="[[class_name]]">[[title]]<p>[[text]]</p></div><div style="clear:both"></div></div><div class="gritter-bottom"></div></div>',
+		_tpl_item: '<a href="[[href]]" id="gritter-item-[[number]]" class="gritter-item-wrapper [[item_class]]" style="display:none" role="alert"><div class="gritter-top"></div><div class="gritter-item">[[close]][[image]]<div class="[[class_name]]">[[title]]<p>[[text]]</p></div><div style="clear:both"></div></div><div class="gritter-bottom"></div></a>',
 		_tpl_wrap: '<div id="gritter-notice-wrapper"></div>',
 		
 		/**
@@ -111,7 +111,8 @@
 				sticky = params.sticky || false,
 				item_class = params.class_name || $.gritter.options.class_name,
 				position = $.gritter.options.position,
-				time_alive = params.time || '';
+				time_alive = params.time || '',
+				href = params.href || '#';
 
 			this._verifyWrapper();
 			
@@ -143,8 +144,8 @@
 			}
 			
 			tmp = this._str_replace(
-				['[[title]]', '[[text]]', '[[close]]', '[[image]]', '[[number]]', '[[class_name]]', '[[item_class]]'],
-				[title, text, this._tpl_close, image_str, this._item_count, class_name, item_class], tmp
+				['[[title]]', '[[text]]', '[[close]]', '[[image]]', '[[number]]', '[[class_name]]', '[[item_class]]', '[[href]]'],
+				[title, text, this._tpl_close, image_str, this._item_count, class_name, item_class, href], tmp
 			);
 
 			// If it's false, don't show another gritter message
@@ -180,7 +181,8 @@
 			});
 			
 			// Clicking (X) makes the perdy thing close
-			$(item).find('.gritter-close').click(function(){
+			$(item).find('.gritter-close').click(function(e){
+				e.preventDefault();
 				Gritter.removeSpecific(number, {}, null, true);
 				return false;
 			});
