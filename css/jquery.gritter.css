@@ -30,7 +30,7 @@
 .gritter-item {
 	display:block;
 	background:url(../images/gritter.png) no-repeat left -40px;
-	background: rgba(0,0,0,0.4);
+	background: rgba(0,0,0,0.8);
 	color:#eee;
 	padding:2px 11px 8px 11px;
 	font-size: 11px;
